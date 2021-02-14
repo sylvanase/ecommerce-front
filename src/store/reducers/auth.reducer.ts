@@ -2,16 +2,12 @@ import {
   RESET_SIGNUP,
   SIGNIN,
   SIGNIN_SUCCESS,
-  SIGNIN_FAIL
-} from "../actions/auth.actions"
-
-import {
+  SIGNIN_FAIL,
   AuthUnionType,
   SIGNUP,
   SIGNUP_SUCCESS,
   SIGNUP_FAIL
 } from "../actions/auth.actions"
-
 export interface AuthState {
   signup: {
     loaded: boolean
