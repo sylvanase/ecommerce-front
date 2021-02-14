@@ -1,23 +1,15 @@
-/*
- * @Author: sylvanas
- * @Date: 2021-02-14 13:37:21
- * @LastEditors: sylvanas
- * @LastEditTime: 2021-02-14 14:04:04
- * @Description: 
- */
 import { Badge, Menu } from "antd"
 import React, { useContext, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { AppState } from "../../store/reducers/index"
 import { RouterState } from "connected-react-router"
-// import { isAuth } from "../../helpers/auth"
-// import { Jwt } from "../../store/models/auth"
-// import { TotalContext } from "../../anotherStore"
-// import { itemCount } from "../../helpers/cart"
+import { isAuth } from "../../helpers/auth"
+import { Jwt } from "../../store/models/auth"
+import { TotalContext } from "../../anotherStore"
+import { itemCount } from "../../helpers/cart"
 
 function useActive(currentPath: string, path: string): string {
-  console.log(currentPath, 'currentPath');
   return currentPath === path ? "ant-menu-item-selected" : ""
 }
 
@@ -31,23 +23,23 @@ const Navigation = () => {
   const isCart = useActive(pathname, "/cart")
   const isDashboard = useActive(pathname, getDashboarUrl())
 
-  // const [count, setCount] = useContext(TotalContext)
+  const [count, setCount] = useContext(TotalContext)
 
   useEffect(() => {
-    // setCount(itemCount())
+    setCount(itemCount())
   })
 
   function getDashboarUrl() {
     let url = "/user/dashboard"
-    // if (isAuth()) {
-    //   const {
-    //     user: { role }
-    //   } = isAuth() as Jwt
+    if (isAuth()) {
+      const {
+        user: { role }
+      } = isAuth() as Jwt
 
-    //   if (role === 1) {
-    //     url = "/admin/dashboard"
-    //   }
-    // }
+      if (role === 1) {
+        url = "/admin/dashboard"
+      }
+    }
     return url
   }
 
@@ -62,10 +54,10 @@ const Navigation = () => {
       <Menu.Item className={isCart}>
         <Link to="/cart">
           购物车
-          {/* <Badge count={count} offset={[5, -10]} /> */}
+          <Badge count={count} offset={[5, -10]} />
         </Link>
       </Menu.Item>
-      {/* {!isAuth() && (
+      {!isAuth() && (
         <>
           <Menu.Item className={isSignin}>
             <Link to="/signin">登录</Link>
@@ -79,7 +71,7 @@ const Navigation = () => {
         <Menu.Item className={isDashboard}>
           <Link to={getDashboarUrl()}>dashboard</Link>
         </Menu.Item>
-      )} */}
+      )}
     </Menu>
   )
 }

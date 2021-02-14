@@ -1,17 +1,46 @@
-/*
- * @Author: sylvanas
- * @Date: 2021-02-13 20:25:36
- * @LastEditors: sylvanas
- * @LastEditTime: 2021-02-14 13:54:04
- * @Description: 
- */
-import React from 'react'
-import Layout from './Layout'
+import { Col, Row, Typography } from "antd"
+import React, { useEffect } from "react"
+import Layout from "./Layout"
+import ProductItem from "./ProductItem"
+import Search from "./Search"
+import { useDispatch, useSelector } from "react-redux"
+import { getProduct } from "../../store/actions/product.actions"
+import { AppState } from "../../store/reducers/index"
+import { ProductState } from "../../store/reducers/product.reducer"
+
+const { Title } = Typography
 
 const Home = () => {
+  const dispatch = useDispatch()
+
+  const { createdAt, sold } = useSelector<AppState, ProductState>(
+    state => state.product
+  )
+
+  useEffect(() => {
+    dispatch(getProduct("createdAt"))
+    dispatch(getProduct("sold"))
+  }, [])
+
   return (
-    <Layout title="首页" subTitle="快来shopping">
-    
+    <Layout title="芒果电商" subTitle="欢迎来到芒果电商, 尽情享受吧">
+      <Search />
+      <Title level={5}>最新上架</Title>
+      <Row gutter={[16, 16]}>
+        {createdAt.products.map(item => (
+          <Col key={item._id} span="6">
+            <ProductItem product={item} />
+          </Col>
+        ))}
+      </Row>
+      <Title level={5}>最受欢迎</Title>
+      <Row gutter={[16, 16]}>
+        {sold.products.map(item => (
+          <Col key={item._id} span="6">
+            <ProductItem product={item} />
+          </Col>
+        ))}
+      </Row>
     </Layout>
   )
 }

@@ -6,17 +6,15 @@ import Routes from "./Routes"
 import store from "./store/index"
 import { history } from "./store"
 import "./style.css"
-// import AnotherStore from "./anotherStore"
+import AnotherStore from "./anotherStore"
 
 ReactDOM.render(
-  // <Routes />,
   <Provider store={store}>
-    <Routes />
-    {/* <ConnectedRouter history={history}>
+    <ConnectedRouter history={history}>
       <AnotherStore>
         <Routes />
       </AnotherStore>
-    </ConnectedRouter> */}
+    </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
 )

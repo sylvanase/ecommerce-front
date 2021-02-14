@@ -1,10 +1,3 @@
-/*
- * @Author: sylvanas
- * @Date: 2021-02-13 20:32:25
- * @LastEditors: sylvanas
- * @LastEditTime: 2021-02-13 20:41:04
- * @Description: 
- */
 import { applyMiddleware, createStore } from "redux"
 import createRootReducer from "./reducers/index"
 import { createHashHistory } from "history"
@@ -25,6 +18,5 @@ const store = createStore(
 )
 
 sagaMiddleware.run(rootSaga)
-
 
 export default store

@@ -89,7 +89,6 @@ export const signinFail = (message: string): SigninFailAction => ({
   message
 })
 
-// 联合类型
 export type AuthUnionType =
   | SignupAction
   | SignupSuccessAction
