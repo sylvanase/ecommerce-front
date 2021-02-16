@@ -89,3 +89,7 @@
   width: auto;
   max-width: 100%;
 }
+
+.ant-empty {
+  width: 100%;
+}

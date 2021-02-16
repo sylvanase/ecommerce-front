@@ -15,6 +15,7 @@ const AddCategory = () => {
   useEffect(() => {
     async function addCategory() {
       try {
+        // 请求成功，提示
         let response = await axios.post<{ name: string }>(
           `${API}/category/create/${user._id}`,
           {
@@ -28,9 +29,11 @@ const AddCategory = () => {
         )
         message.success(`[${response.data.name}] 分类添加成功`)
       } catch (error) {
+        // 返回失败
         message.error(error.response.data.error)
       }
     }
+    // name 非空时请求
     if (name) {
       addCategory()
     }

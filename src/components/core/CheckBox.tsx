@@ -1,5 +1,5 @@
 import React, { useEffect, FC } from "react"
-import { List, Typography, Checkbox as AntdCheckbox } from "antd"
+import { Typography, Checkbox as AntdCheckbox } from "antd"
 import { useDispatch, useSelector } from "react-redux"
 import { getCategory } from "../../store/actions/category.actions"
 import { AppState } from "../../store/reducers/index"
@@ -11,7 +11,7 @@ const { Title } = Typography
 interface Props {
   handleFilter: (arg: string[]) => void
 }
-
+// FC 函数
 const Checkbox: FC<Props> = ({ handleFilter }) => {
   const dispatch = useDispatch()
 

@@ -58,6 +58,7 @@ const ProductItem: FC<Props> = ({
       actions={showButtons()}
     >
       <Title level={5}>{product.name}</Title>
+      {/* 限制为两行 */}
       <Paragraph ellipsis={{ rows: 2 }}>{product.description}</Paragraph>
       <Row>
         <Col span="12">销量: {product.sold}</Col>

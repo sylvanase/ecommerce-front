@@ -9,6 +9,7 @@ import { searchProduct } from "../../store/actions/product.actions"
 import { ProductState } from "../../store/reducers/product.reducer"
 
 const Search = () => {
+  // 获取dispatch
   const dispatch = useDispatch()
 
   const { category } = useSelector<AppState, CategoryState>(
@@ -24,6 +25,7 @@ const Search = () => {
   }, [])
 
   const onFinish = (value: { category: string; search: string }) => {
+    // 触发表单搜索
     dispatch(
       searchProduct({ category: value.category, search: value.search })
     )

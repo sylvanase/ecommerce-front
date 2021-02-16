@@ -68,6 +68,7 @@ const Shop = () => {
     setSkip(skip + 4)
   }
 
+  // 无数据状态
   const noData = () => {
     return <Row>{product.filter.result.size === 0 && <Empty />}</Row>
   }

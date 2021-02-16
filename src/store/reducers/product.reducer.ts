@@ -123,6 +123,7 @@ export default function productReducer(
         }
       }
     case FILTER_PRODUCT_SUCCESS:
+      // 将老数据与新数据进行拼接
       let data =
         action.skip === 0
           ? action.payload.data

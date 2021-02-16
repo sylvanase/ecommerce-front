@@ -52,6 +52,7 @@ const AddProduct = () => {
   }
 
   const addProductForm = () => {
+    // 设定可选文件类型
     const props = {
       accept: "image/*",
       beforeUpload: function (file: RcFile) {
